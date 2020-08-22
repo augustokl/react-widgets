@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
-import Dropdown from './components/Dropdown';
 import Translate from './components/Translate';
+import Route from './routes';
+import Header from './components/Header';
 
 
 const items = [
@@ -20,25 +21,19 @@ const items = [
   },
 ]
 
-const options = [
-  {
-    label: 'The Color Red',
-    value: 'red'
-  },
-  {
-    label: 'The Color Green',
-    value: 'green'
-  },
-  {
-    label: 'A Shade of Blue',
-    value: 'blue'
-  },
-]
-
 function App() {
   return (
-    <div className="App" style={{margin: '30px 10px'}}>
-      <Translate />
+    <div className="App">
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 }
